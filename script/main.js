@@ -1,27 +1,17 @@
+import { getKeywords } from './keyword.js'
+
 $(document).ready(() => {
   handle()
 })
 
+var allKeywords = getKeywords()
 var point = 1
 var gameOver = false
 var skippedKeywords = []
 var isStart = false
 
-function getKeyWords()
-{
-  return [
-    'nhay',
-    'mua',
-    'mua1',
-    'mua2',
-    'mua3',
-    'mua4',
-  ]
-}
-
-function handle()
-{
-  const keywords = getKeyWords().sort(() => Math.random() - 0.5)
+function handle() {
+  const keywords = allKeywords.sort(() => Math.random() - 0.5)
 
   $('#start').click(function () {
     if (!isStart) {
@@ -29,12 +19,14 @@ function handle()
           showConfirmButton: false,
           timer: 2000,
           title: 'CHÚC MAY MẮN! =))))',
-          icon: 'success',
         },
       ).then(() => {
         showKeyword(keywords[0])
-
         isStart = true
+
+        $('#start').prop('disabled', true)
+        $('#pause').prop('disabled', false)
+        $('#pause').trigger('click')
       })
     }
   })
@@ -49,8 +41,7 @@ function handle()
           showKeyword(skippedKeywords[0])
           skippedKeywords.shift()
         } else {
-          showKeyword('GAME OVER!')
-          gameOver = true
+          handleGameOver('GAME OVER!')
         }
       }
 
@@ -77,7 +68,7 @@ function handle()
           showKeyword(skippedKeywords[0])
           skippedKeywords.shift()
         } else {
-          showKeyword('GAME OVER!')
+          handleGameOver('GAME OVER!')
         }
       }
     }
@@ -85,28 +76,36 @@ function handle()
 
   $('#reset').click(() => {
     Swal.fire({
-        title: 'Chắc chưa? =))',
+        title: 'ĐÃ LƯU LẠI ĐIỂM SỐ CHƯA?',
         showCancelButton: true,
         icon: 'warning',
         confirmButtonText: 'OK!',
-        cancelButtonText: 'Xí Mê =))'
+        cancelButtonText: 'CHƯA =))',
       },
     ).then((res) => {
       if (res.isConfirmed) {
         window.location.href = ''
       }
     })
-
   })
 }
 
-function increasePoint()
-{
+function increasePoint() {
   $('#point').html(point)
   point++
 }
 
-function showKeyword(keyword)
-{
-  $('#keyword').html(keyword)
+function showKeyword(keyword) {
+  $('#keyword').html(keyword.toUpperCase())
+}
+
+export function handleGameOver(message = "TIME'S UP!") {
+  gameOver = true
+  showKeyword(message)
+
+  $('.section-keyword').addClass('bg-danger')
+  $('#pause').trigger('click')
+  $('#pause').prop('disabled', true)
+  $('#skip').prop('disabled', true)
+  $('#next').prop('disabled', true)
 }

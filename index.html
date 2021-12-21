@@ -4,19 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+          crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+            crossorigin="anonymous"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="icon" type="image/x-icon" href="https://emoji.slack-edge.com/T028JVBUY4F/cev13/83742eab75db9b11.png">
+    <link rel="stylesheet" href="style/css/timer.css">
+    <link rel="stylesheet" href="style/css/style.css">
+    <link rel="icon" type="image/x-icon" href="style/image/CEV13.png">
     <title>Game Khắm Bựa =))</title>
 </head>
 <body class="container-fluid">
-<header class="bg-secondary p-2 rounded">
+<header class="p-2">
     <nav class="navbar">
         <div>
             <ul class="nav navbar-expand-sm">
-                <li class="nav-item"><button id="reset" class="nav-link bg-danger mr-5"><b>RESET</b></button>
+                <li class="nav-item">
+                    <button id="reset" class="nav-link bg-danger mr-5"><b>RESET</b></button>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"><b></b></a>
@@ -24,29 +33,88 @@
             </ul>
         </div>
         <span style="font-weight: bold; color: white; font-size: 50px" class="text-center">
-            <button id="start" class="bg-primary"><b>START</b></button></span>
+            <button id="start" class="bg-info"><b>START</b></button></span>
         <div>
             <ul class="nav">
-                <li class="nav-item"><button id="skip" class="nav-link bg-warning"><b>SKIP</b></button></li>
-                <li class="nav-item"><button id="next" class="nav-link bg-success ml-5"><b>NEXT</b></button></li>
+                <li class="nav-item">
+                    <button id="skip" class="nav-link bg-warning"><b>SKIP</b></button>
+                </li>
+                <li class="nav-item">
+                    <button id="next" class="nav-link bg-success ml-5"><b>NEXT</b></button>
+                </li>
             </ul>
         </div>
     </nav>
 </header>
 <div>
-    <section class="bg-primary mb-3 mt-5 float-left ml-5" style="width: 70%; height: 80%">
-        <div class="text-center display-4 font-weight-bold" style="margin: 18% auto; font-size: 120px">
+    <section class="section-keyword mb-3 mt-5 float-left ml-5 rounded"
+             style="width: 70%; height: 100%; background: #0B95FF">
+        <div class="keyword-board text-center display-4 font-weight-bold" style="margin: 18% auto; font-size: 120px">
             <p id="keyword">MINI GAME CEV13</p>
         </div>
     </section>
-    <section class="container bg-danger float-left ml-5 mt-5" style="width: 20%; height: 300px">
-        TIMER
+    <section class="container float-left ml-5 mt-2" style="width: 20%; height: 300px">
+        <div class="setters">
+            <div class="minutes-set">
+                <button data-setter="minutes-plus">+</button>
+                <button data-setter="minutes-minus">-</button>
+            </div>
+            <div class="seconds-set">
+                <button data-setter="seconds-plus">+</button>
+                <button data-setter="seconds-minus">-</button>
+            </div>
+        </div>
+        <div class="circle">
+            <svg width="300" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(110,110)">
+                    <circle r="100" class="e-c-base"/>
+                    <g transform="rotate(-90)">
+                        <circle r="100" class="e-c-progress"/>
+                        <g id="e-pointer">
+                            <circle cx="100" cy="0" r="8" class="e-c-pointer"/>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+        </div>
+        <div class="controlls">
+            <div class="display-remain-time">00:00</div>
+            <button class="play" id="pause" disabled></button>
+        </div>
     </section>
-    <section class="container bg-danger float-left ml-5 mt-5 text-center display-4 font-weight-bold" style="width: 20%; height: 200px">
-        <p id="point" style="margin: 8% auto; font-size: 120px">0</p>
+    <section class="container bg-success float-left ml-5 mt-5 text-center display-4 font-weight-bold rounded-circle"
+             style="width: 20%;">
+        <p id="point" style="margin: 8% auto; font-size: 120px; font-family: Consolas">0</p>
     </section>
+    <section class="float-left rounded"
+             style="width: 100%; height: auto;">
+        <div class="container-fluid text-center display-4 font-weight-bold"
+             style="margin: 0 auto; margin-top: 65px; font-size: 120px; font-family: VNI-Disney;
+             background: -webkit-linear-gradient(#000000, #00a6ff);
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;">
+            TOGETHER WE BUILD
+        </div>
+    </section>
+
 </div>
 </body>
-<script src="script/main.js"></script>
+<script type="module" src="script/timer/timer-handler.js"></script>
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date()
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]
+    a.async = 1
+    a.src = g
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga')
 
+  ga('create', 'UA-46156385-1', 'cssscript.com')
+  ga('send', 'pageview')
+</script>
+<script type="module" src="script/main.js"></script>
 </html>
