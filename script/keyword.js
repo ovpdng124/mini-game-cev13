@@ -1,5 +1,5 @@
 export function getKeywords() {
-  return [
+  const guestWordGame = [
     'làm',
     'lấy',
     'thấy',
@@ -172,4 +172,27 @@ export function getKeywords() {
     'căng thẳng',
     'tuyệt vọng',
   ]
+  const olympiaGame = [
+    'hổ còn được gọi là ông gì',
+    'lão hạc tự tử bằng cái gì',
+    'Tên 1 trường đại học ở ĐN',
+    'Tế bào máu có nhân màu trắng nhạt tên là gì',
+    'Tên bộ phim hình sự nhiều tập nổi tiếng của Italy về thế giới mafia đã được chiếu ở VN',
+    'Tên diễn viên vào vai nam chính trong phim Mùa Ổi có 3 chữ B',
+    'Cầu thử christiano Ronaldo của đội MU mang quốc tịch gì',
+    'Trong 1 ca khúc của nhạc sĩ Nguyễn Cường: “Ta yêu nhau từ đâu” ?',
+    'Hồ 3 bể nằm ở tỉnh nào (bắc cạn)',
+    'hình ảnh thu nhỏ và khái quát hoá 1 phần mặt đất lên mặt giấy phẳng gọi là gì',
+    'người đỗ thứ 2 sau trạng nguyên gọi là gì',
+    '1 bài hát của nhạc sĩ nguyễn minh tiến tham gia chương trình bài Việt Nam 2006',
+    'làng nghề gốm sứ nổi tiếng ở ngoại thành hà nội',
+    'Trong truyện trạng quỳnh, trạng chết thì chúa làm sao ?',
+    'loại hoa màu tím nở vào mùa hè, gắn liền với thời học sinh ',
+    'Tên 1 bài thơ nổi tiếng và cũng là 1 tập thơ của nhà thơ Bằng Việt',
+    'Loại chim tượng trưng cho hoà bình',
+    'Tính từ chỉ sự chắc chắn và lâu hỏng',
+    'Tên khác của bài hát Đàn Chim Việt do nhạc sĩ Văn Cao sáng tác',
+  ]
+  
+  return olympiaGame;
 }
