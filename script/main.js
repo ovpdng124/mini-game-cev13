@@ -96,7 +96,7 @@ function increasePoint() {
 }
 
 function showKeyword(keyword) {
-  $('#keyword').html(keyword.toUpperCase())
+  $('#keyword').html(keyword)
 }
 
 export function handleGameOver(message = "TIME'S UP!") {
