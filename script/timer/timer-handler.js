@@ -20,7 +20,7 @@ const gameOver = handleGameOver
 
 let intervalTimer
 let timeLeft
-let wholeTime = 240 // manage this to set the whole time
+let wholeTime = 600 // manage this to set the whole time
 let isPaused = false
 let isStarted = false
 
